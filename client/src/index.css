@@ -1,0 +1,49 @@
+/* Tailwind Base Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background-color: #4CAF50; /* Or whatever color you want for the body background */
+  }
+
+
+
+
+/* Center the container */
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bounce animation for the image */
+@keyframes bounceLogo {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* Adjust the bounce height */
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounceLogo 2s infinite ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+  
+}

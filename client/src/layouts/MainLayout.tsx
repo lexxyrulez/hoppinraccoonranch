@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "wouter"; // Ensure Wouter is properly installed
 import { Menu, Bell, Settings, User } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
 
 interface MainLayoutProps {
   children: React.ReactNode;

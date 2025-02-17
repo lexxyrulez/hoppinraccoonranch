@@ -3,22 +3,22 @@ import react from "@vitejs/plugin-react";
 // import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path, { dirname } from "path";
 import checker from "vite-plugin-checker";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal"
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
 export default defineConfig({
   plugins: [
     react(),
     checker({ typescript: true, overlay: false }),
     runtimeErrorOverlay(),
-    // themePlugin(),
-,
+    // themePlugin(), // Uncomment if needed
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"),
+      "@": path.resolve(__dirname, "src"), // Ensure 'src' is correct
       "@db": path.resolve(__dirname, "db"),
     },
   },

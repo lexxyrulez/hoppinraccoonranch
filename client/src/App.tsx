@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'wouter';
-import MainLayout from '@/layouts/MainLayout';
+import MainLayout from "./layouts/MainLayout";
 import HomePage from '@/pages/HomePage';
 import ShopPage from '@/pages/shop';
 import ProductsPage from '@/pages/products';

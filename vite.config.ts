@@ -10,12 +10,18 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"), // Make sure "client/src" is correct
+      "@": path.resolve(__dirname, "src"), // Ensure correct alias
     },
   },
-  root: path.resolve(__dirname, "client"),
+  base: "/hoppinraccoonranch/", // Set correct base for GitHub Pages
+  root: path.resolve(__dirname, "client"), // Set Vite's root directory
   build: {
-    outDir: path.resolve(__dirname, "build"),
+    outDir: path.resolve(__dirname, "dist"), // Match with gh-pages
     emptyOutDir: true,
+  },
+  server: {
+    proxy: {
+      "/api": "http://localhost:5000", // Proxy backend API requests
+    },
   },
 });

@@ -14,18 +14,17 @@ export default defineConfig({
     checker({ typescript: true, overlay: false }),
     runtimeErrorOverlay(),
   ],
+ 
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client", "src"), // Ensure correct alias
-      "@db": path.resolve(__dirname, "db"),
+      '@': '/src',  // This assumes you want to use @ as an alias for the src directory
     },
   },
+
+
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "build"), // Using "build" as output directory
     emptyOutDir: true,
-    rollupOptions: {
-      external: [],
-    },
   },
 });

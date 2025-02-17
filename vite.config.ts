@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"), // Ensure correct alias
+      "@/": path.resolve(__dirname, "./src"),
     },
   },
   base: "/hoppinraccoonranch/", // Set correct base for GitHub Pages

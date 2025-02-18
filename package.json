@@ -8,7 +8,7 @@
     "dev": "tsx watch --clear-screen=false server/index.ts",
     "build": "vite build",
     "heroku-postbuild": "vite build",
-    "start": "vite preview --port $PORT --host",
+   "start": "npm install -g serve && serve -s dist -l $PORT",
     "check": "tsc",
     "db:push": "drizzle-kit push",
     "proxy": "http://localhost:5000",

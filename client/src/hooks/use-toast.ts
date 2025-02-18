@@ -1,5 +1,9 @@
 import * as React from "react"
-import { ToastActionElement, ToastProps } from '@/components/ui/toast'
+
+import type {
+  ToastActionElement,
+  ToastProps,
+} from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
@@ -28,10 +32,22 @@ function genId() {
 type ActionType = typeof actionTypes
 
 type Action =
-  | { type: ActionType["ADD_TOAST"]; toast: ToasterToast }
-  | { type: ActionType["UPDATE_TOAST"]; toast: Partial<ToasterToast> }
-  | { type: ActionType["DISMISS_TOAST"]; toastId?: ToasterToast["id"] }
-  | { type: ActionType["REMOVE_TOAST"]; toastId?: ToasterToast["id"] }
+  | {
+      type: ActionType["ADD_TOAST"]
+      toast: ToasterToast
+    }
+  | {
+      type: ActionType["UPDATE_TOAST"]
+      toast: Partial<ToasterToast>
+    }
+  | {
+      type: ActionType["DISMISS_TOAST"]
+      toastId?: ToasterToast["id"]
+    }
+  | {
+      type: ActionType["REMOVE_TOAST"]
+      toastId?: ToasterToast["id"]
+    }
 
 interface State {
   toasts: ToasterToast[]
@@ -74,6 +90,8 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
+      // ! Side effects ! - This could be extracted into a dismissToast() action,
+      // but I'll keep it here for simplicity
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
@@ -86,12 +104,14 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         toasts: state.toasts.map((t) =>
           t.id === toastId || toastId === undefined
-            ? { ...t, open: false }
+            ? {
+                ...t,
+                open: false,
+              }
             : t
         ),
       }
     }
-
     case "REMOVE_TOAST":
       if (action.toastId === undefined) {
         return {
@@ -103,19 +123,16 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         toasts: state.toasts.filter((t) => t.id !== action.toastId),
       }
-
-    default:
-      return state
   }
 }
 
-const listeners = React.useRef<Array<(state: State) => void>>([])
+const listeners: Array<(state: State) => void> = []
 
 let memoryState: State = { toasts: [] }
 
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action)
-  listeners.current.forEach((listener) => {
+  listeners.forEach((listener) => {
     listener(memoryState)
   })
 }
@@ -145,7 +162,7 @@ function toast({ ...props }: Toast) {
   })
 
   return {
-    id,
+    id: id,
     dismiss,
     update,
   }
@@ -155,11 +172,11 @@ function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
 
   React.useEffect(() => {
-    listeners.current.push(setState)
+    listeners.push(setState)
     return () => {
-      const index = listeners.current.indexOf(setState)
+      const index = listeners.indexOf(setState)
       if (index > -1) {
-        listeners.current.splice(index, 1)
+        listeners.splice(index, 1)
       }
     }
   }, [state])

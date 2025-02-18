@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, Switch } from 'wouter';
-import MainLayout from "./layouts/MainLayout";
-import HomePage from './pages/HomePage';
-import ShopPage from './pages/shop';
-import ProductsPage from './pages/products';
-import FaqsPage from './pages/faqs';
-import ContactUsPage from './pages/contactus';
-import AboutUsPage from './pages/AboutUs';
-import LoginPage from './pages/Login';
-import SignupPage from './pages/Signup';
-import DashboardPage from './pages/Dashboard';
+import MainLayout from '@/layouts/MainLayout';
+import HomePage from '@/pages/HomePage';
+import ShopPage from '@/pages/shop';
+import ProductsPage from '@/pages/products';
+import FaqsPage from '@/pages/faqs';
+import ContactUsPage from '@/pages/contactus';
+import AboutUsPage from '@/pages/AboutUs';
+import LoginPage from '@/pages/Login';
+import SignupPage from '@/pages/Signup';
+import DashboardPage from '@/pages/Dashboard';
 
 
 function App() {

@@ -22,8 +22,7 @@ export function Toaster() {
                 <ToastDescription>{description}</ToastDescription>
               )}
             </div>
-            {/* Check if action exists before rendering */}
-            {action && <div className="mt-2">{action}</div>}
+            {action}
             <ToastClose />
           </Toast>
         )

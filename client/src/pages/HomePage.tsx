@@ -21,14 +21,14 @@ const HomePage: React.FC = () => {
             <span className="sitename">
               <img
                 src="img/logoracoon.jpg"
-                alt="Herbal Store Logo"
+                alt="hops Store Logo"
                 className="w-24 h-24 animate-bounce-slow"
               />
             </span>
           </a>
 
           <h2 className="text-4xl font-bold text-shadow-md" data-aos="fade-up" data-aos-delay="100">
-            Welcome to Our Herbal Store
+            Welcome to Our hops Store
           </h2>
           <p className="text-xl mt-4 text-shadow-md" data-aos="fade-up" data-aos-delay="200">
             Explore our wide range of high-quality herbs and natural products.
